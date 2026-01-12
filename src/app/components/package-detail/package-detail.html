@@ -1,0 +1,136 @@
+<div class="container">
+  @if (package && destination) {
+    <div class="header-actions">
+      <button mat-raised-button routerLink="/destinations" class="back-btn">
+        <mat-icon>arrow_back</mat-icon> Back to Destinations
+      </button>
+      
+      <!-- Event binding - favorite toggle with ngClass -->
+      <button 
+        mat-icon-button 
+        (click)="toggleFavorite()"
+        [ngClass]="{'favorite-active': isFavorite}"
+        class="favorite-btn">
+        <mat-icon>{{ isFavorite ? 'favorite' : 'favorite_border' }}</mat-icon>
+      </button>
+    </div>
+
+    <mat-card class="package-card">
+      <!-- Image Gallery with event binding -->
+      <div class="image-gallery">
+        <img mat-card-image [src]="selectedImage" [alt]="package.name" class="main-image" />
+        <div class="thumbnail-container">
+          <img 
+            *ngFor="let img of imageGallery; let i = index"
+            [src]="img"
+            [alt]="'View ' + (i + 1)"
+            [ngClass]="{'selected-thumbnail': selectedImage === img}"
+            (click)="selectImage(img)"
+            class="thumbnail" />
+        </div>
+      </div>
+      
+      <mat-card-header>
+        <mat-card-title>{{ package.name }}</mat-card-title>
+        <mat-card-subtitle>{{ destination.name }}, {{ destination.country }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="package-meta">
+          <div class="meta-item">
+            <mat-icon>schedule</mat-icon>
+            <span>{{ package.duration }} Days</span>
+          </div>
+          <div 
+            class="meta-item price"
+            [ngClass]="getPriceCategory()"
+            [ngStyle]="{'font-size': package.price > 5000 ? '1.5rem' : '1.2rem'}">
+            <mat-icon>attach_money</mat-icon>
+            <span>${{ package.price }} per person</span>
+          </div>
+        </div>
+
+        <p class="description">{{ package.description }}</p>
+
+        <!-- Collapsible Itinerary Section -->
+        <div class="section">
+          <div class="section-header" (click)="toggleSection('itinerary')">
+            <h2>Itinerary</h2>
+            <mat-icon [ngStyle]="{'transform': showItinerary ? 'rotate(180deg)' : 'rotate(0deg)'}">
+              expand_more
+            </mat-icon>
+          </div>
+          @if (showItinerary) {
+            <ul class="itinerary-list">
+              @for (item of package.itinerary; track $index) {
+                <li 
+                  [ngClass]="{'highlighted': $index === 0}"
+                  [ngStyle]="{'animation-delay': $index * 0.1 + 's'}">
+                  <strong>Day {{ $index + 1 }}:</strong> {{ item }}
+                </li>
+              }
+            </ul>
+          }
+        </div>
+
+        <!-- Collapsible Inclusions Section -->
+        <div class="section">
+          <div class="section-header" (click)="toggleSection('inclusions')">
+            <h2>Inclusions</h2>
+            <mat-icon [ngStyle]="{'transform': showInclusions ? 'rotate(180deg)' : 'rotate(0deg)'}">
+              expand_more
+            </mat-icon>
+          </div>
+          @if (showInclusions) {
+            <mat-chip-set>
+              @for (inclusion of package.inclusions; track inclusion) {
+                <mat-chip class="inclusion-chip">
+                  <mat-icon>check_circle</mat-icon>
+                  {{ inclusion }}
+                </mat-chip>
+              }
+            </mat-chip-set>
+          }
+        </div>
+
+        <!-- Collapsible Exclusions Section -->
+        <div class="section">
+          <div class="section-header" (click)="toggleSection('exclusions')">
+            <h2>Exclusions</h2>
+            <mat-icon [ngStyle]="{'transform': showExclusions ? 'rotate(180deg)' : 'rotate(0deg)'}">
+              expand_more
+            </mat-icon>
+          </div>
+          @if (showExclusions) {
+            <mat-chip-set>
+              @for (exclusion of package.exclusions; track exclusion) {
+                <mat-chip class="exclusion-chip">
+                  <mat-icon>cancel</mat-icon>
+                  {{ exclusion }}
+                </mat-chip>
+              }
+            </mat-chip-set>
+          }
+        </div>
+
+        <div class="section">
+          <h2>Availability</h2>
+          <div 
+            class="availability-info"
+            [ngStyle]="{'border-left': '4px solid ' + getAvailabilityColor()}">
+            <p><strong>From:</strong> {{ package.availableFrom | date:'mediumDate' }}</p>
+            <p><strong>To:</strong> {{ package.availableTo | date:'mediumDate' }}</p>
+          </div>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="bookNow()" class="book-btn">
+          <mat-icon>flight_takeoff</mat-icon> Book Now
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  } @else {
+    <p class="loading">Loading package details...</p>
+  }
+</div>

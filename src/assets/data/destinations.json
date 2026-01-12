@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "Paris",
+    "country": "France",
+    "description": "The City of Light, known for its art, culture, and romantic atmosphere.",
+    "imageUrl": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800",
+    "rating": 4.8,
+    "popularActivities": ["Eiffel Tower", "Louvre Museum", "Seine River Cruise"]
+  },
+  {
+    "id": 2,
+    "name": "Tokyo",
+    "country": "Japan",
+    "description": "A vibrant city blending ancient tradition with modern technology.",
+    "imageUrl": "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800",
+    "rating": 4.9,
+    "popularActivities": ["Tokyo Tower", "Senso-ji Temple", "Shibuya Crossing"]
+  },
+  {
+    "id": 3,
+    "name": "New York",
+    "country": "USA",
+    "description": "The city that never sleeps, offering world-class entertainment and culture.",
+    "imageUrl": "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800",
+    "rating": 4.7,
+    "popularActivities": ["Statue of Liberty", "Central Park", "Times Square"]
+  },
+  {
+    "id": 4,
+    "name": "Bali",
+    "country": "Indonesia",
+    "description": "Tropical paradise with stunning beaches, temples, and rich culture.",
+    "imageUrl": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800",
+    "rating": 4.6,
+    "popularActivities": ["Beach Hopping", "Ubud Rice Terraces", "Temple Tours"]
+  },
+  {
+    "id": 5,
+    "name": "Dubai",
+    "country": "UAE",
+    "description": "Modern metropolis with luxury shopping, ultramodern architecture.",
+    "imageUrl": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800",
+    "rating": 4.5,
+    "popularActivities": ["Burj Khalifa", "Desert Safari", "Dubai Mall"]
+  }
+]

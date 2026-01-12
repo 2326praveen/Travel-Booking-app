@@ -1,0 +1,145 @@
+<div class="container">
+  <h1>Book Your Trip</h1>
+
+  @if (package) {
+    <mat-card class="package-summary">
+      <mat-card-header>
+        <mat-card-title>{{ package.name }}</mat-card-title>
+        <mat-card-subtitle>{{ package.duration }} Days | ${{ package.price }} per person</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+
+    <mat-card class="booking-card">
+      <mat-card-content>
+        <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+          <div class="form-row">
+            <mat-form-field 
+              appearance="outline" 
+              class="full-width"
+              [ngClass]="{
+                'field-valid': bookingForm.get('fullName')?.valid && bookingForm.get('fullName')?.touched,
+                'field-invalid': bookingForm.get('fullName')?.invalid && bookingForm.get('fullName')?.touched
+              }">
+              <mat-label>Full Name</mat-label>
+              <input 
+                matInput 
+                formControlName="fullName" 
+                placeholder="Enter your full name"
+                [ngStyle]="{'border-left': bookingForm.get('fullName')?.touched ? (bookingForm.get('fullName')?.valid ? '3px solid #4caf50' : '3px solid #f44336') : 'none'}" />
+              @if (bookingForm.get('fullName')?.hasError('required') && bookingForm.get('fullName')?.touched) {
+                <mat-error>Full name is required</mat-error>
+              }
+              @if (bookingForm.get('fullName')?.hasError('minlength')) {
+                <mat-error>Name must be at least 3 characters</mat-error>
+              }
+            </mat-form-field>
+          </div>
+
+          <div class="form-row">
+            <mat-form-field 
+              appearance="outline" 
+              class="half-width"
+              [ngClass]="{
+                'field-valid': bookingForm.get('email')?.valid && bookingForm.get('email')?.touched,
+                'field-invalid': bookingForm.get('email')?.invalid && bookingForm.get('email')?.touched
+              }">
+              <mat-label>Email</mat-label>
+              <input 
+                matInput 
+                type="email" 
+                formControlName="email" 
+                placeholder="your@email.com"
+                [ngStyle]="{'border-left': bookingForm.get('email')?.touched ? (bookingForm.get('email')?.valid ? '3px solid #4caf50' : '3px solid #f44336') : 'none'}" />
+              @if (bookingForm.get('email')?.hasError('required') && bookingForm.get('email')?.touched) {
+                <mat-error>Email is required</mat-error>
+              }
+              @if (bookingForm.get('email')?.hasError('email')) {
+                <mat-error>Invalid email format</mat-error>
+              }
+            </mat-form-field>
+
+            <mat-form-field 
+              appearance="outline" 
+              class="half-width"
+              [ngClass]="{
+                'field-valid': bookingForm.get('phone')?.valid && bookingForm.get('phone')?.touched,
+                'field-invalid': bookingForm.get('phone')?.invalid && bookingForm.get('phone')?.touched
+              }">
+              <mat-label>Phone Number</mat-label>
+              <input 
+                matInput 
+                formControlName="phone" 
+                placeholder="1234567890"
+                [ngStyle]="{'border-left': bookingForm.get('phone')?.touched ? (bookingForm.get('phone')?.valid ? '3px solid #4caf50' : '3px solid #f44336') : 'none'}" />
+              @if (bookingForm.get('phone')?.hasError('required') && bookingForm.get('phone')?.touched) {
+                <mat-error>Phone is required</mat-error>
+              }
+              @if (bookingForm.get('phone')?.hasError('pattern')) {
+                <mat-error>Enter a valid 10-digit phone number</mat-error>
+              }
+            </mat-form-field>
+          </div>
+
+          <div class="form-row">
+            <mat-form-field appearance="outline" class="half-width">
+              <mat-label>Number of Travelers</mat-label>
+              <input matInput type="number" formControlName="numberOfTravelers" />
+              @if (bookingForm.get('numberOfTravelers')?.hasError('required')) {
+                <mat-error>Number of travelers is required</mat-error>
+              }
+              @if (bookingForm.get('numberOfTravelers')?.hasError('min')) {
+                <mat-error>At least 1 traveler required</mat-error>
+              }
+              @if (bookingForm.get('numberOfTravelers')?.hasError('max')) {
+                <mat-error>Maximum 10 travelers allowed</mat-error>
+              }
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="half-width">
+              <mat-label>Travel Date</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="travelDate" [min]="minDate" [max]="maxDate" />
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              @if (bookingForm.get('travelDate')?.hasError('required') && bookingForm.get('travelDate')?.touched) {
+                <mat-error>Travel date is required</mat-error>
+              }
+            </mat-form-field>
+          </div>
+
+          <div class="form-row">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Special Requests</mat-label>
+              <textarea matInput formControlName="specialRequests" rows="4" placeholder="Any special requests or dietary requirements?"></textarea>
+            </mat-form-field>
+          </div>
+
+          <div class="price-summary">
+            <h2 
+              [ngStyle]="{
+                'color': totalPrice > 5000 ? '#e91e63' : totalPrice > 2000 ? '#ff9800' : '#4caf50',
+                'font-size': totalPrice > 5000 ? '2rem' : '1.8rem'
+              }">
+              Total Price: ${{ totalPrice }}
+            </h2>
+            <p>{{ bookingForm.get('numberOfTravelers')?.value || 1 }} traveler(s) × ${{ package.price }}</p>
+          </div>
+
+          <div class="form-actions">
+            <button mat-raised-button type="button" routerLink="/destinations">Cancel</button>
+            <button 
+              mat-raised-button 
+              color="primary" 
+              type="submit" 
+              [disabled]="!bookingForm.valid"
+              [ngClass]="{'pulse-animation': bookingForm.valid}"
+              [ngStyle]="{'opacity': bookingForm.valid ? '1' : '0.6'}">
+              Confirm Booking
+            </button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  } @else {
+    <p class="loading">Loading package information...</p>
+  }
+</div>

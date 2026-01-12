@@ -1,0 +1,104 @@
+[
+  {
+    "id": 1,
+    "destinationId": 1,
+    "name": "Romantic Paris Getaway",
+    "description": "Experience the romance of Paris with guided tours and fine dining.",
+    "duration": 5,
+    "price": 1899,
+    "imageUrl": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800",
+    "itinerary": [
+      "Day 1: Arrival and Eiffel Tower visit",
+      "Day 2: Louvre Museum and Arc de Triomphe",
+      "Day 3: Versailles Palace day trip",
+      "Day 4: Montmartre and Sacré-Cœur",
+      "Day 5: Shopping and departure"
+    ],
+    "inclusions": ["4-star hotel accommodation", "Daily breakfast", "Guided city tours", "Airport transfers"],
+    "exclusions": ["International flights", "Lunch and dinner", "Personal expenses"],
+    "availableFrom": "2026-03-01",
+    "availableTo": "2026-11-30"
+  },
+  {
+    "id": 2,
+    "destinationId": 2,
+    "name": "Tokyo Adventure",
+    "description": "Discover the best of Tokyo from ancient temples to modern technology.",
+    "duration": 7,
+    "price": 2499,
+    "imageUrl": "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800",
+    "itinerary": [
+      "Day 1: Arrival and Shibuya exploration",
+      "Day 2: Senso-ji Temple and Asakusa",
+      "Day 3: Tokyo Tower and shopping",
+      "Day 4: Mount Fuji day trip",
+      "Day 5: Akihabara and anime culture",
+      "Day 6: Traditional tea ceremony",
+      "Day 7: Departure"
+    ],
+    "inclusions": ["3-star hotel accommodation", "Daily breakfast", "JR Pass", "Guided tours"],
+    "exclusions": ["International flights", "Lunch and dinner", "Personal expenses"],
+    "availableFrom": "2026-04-01",
+    "availableTo": "2026-10-31"
+  },
+  {
+    "id": 3,
+    "destinationId": 3,
+    "name": "New York City Explorer",
+    "description": "See the iconic sights of the Big Apple.",
+    "duration": 4,
+    "price": 1599,
+    "imageUrl": "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800",
+    "itinerary": [
+      "Day 1: Arrival and Times Square",
+      "Day 2: Statue of Liberty and Ellis Island",
+      "Day 3: Central Park and museums",
+      "Day 4: Shopping and departure"
+    ],
+    "inclusions": ["3-star hotel accommodation", "Daily breakfast", "City pass", "Airport transfers"],
+    "exclusions": ["International flights", "Lunch and dinner", "Personal expenses"],
+    "availableFrom": "2026-02-01",
+    "availableTo": "2026-12-31"
+  },
+  {
+    "id": 4,
+    "destinationId": 4,
+    "name": "Bali Beach Paradise",
+    "description": "Relax on pristine beaches and explore cultural wonders.",
+    "duration": 6,
+    "price": 1299,
+    "imageUrl": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800",
+    "itinerary": [
+      "Day 1: Arrival and beach relaxation",
+      "Day 2: Ubud rice terraces and monkey forest",
+      "Day 3: Temple tours",
+      "Day 4: Water sports and beach activities",
+      "Day 5: Spa and wellness",
+      "Day 6: Departure"
+    ],
+    "inclusions": ["4-star resort accommodation", "Daily breakfast", "Spa session", "Airport transfers"],
+    "exclusions": ["International flights", "Lunch and dinner", "Personal expenses"],
+    "availableFrom": "2026-01-15",
+    "availableTo": "2026-12-15"
+  },
+  {
+    "id": 5,
+    "destinationId": 5,
+    "name": "Dubai Luxury Experience",
+    "description": "Experience the height of luxury in this modern desert city.",
+    "duration": 5,
+    "price": 2299,
+    "imageUrl": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800",
+    "itinerary": [
+      "Day 1: Arrival and Burj Khalifa",
+      "Day 2: Desert safari with BBQ dinner",
+      "Day 3: Dubai Mall and aquarium",
+      "Day 4: Palm Jumeirah and beach resort",
+      "Day 5: Departure"
+    ],
+    "inclusions": ["5-star hotel accommodation", "Daily breakfast", "Desert safari", "City tours"],
+    "exclusions": ["International flights", "Lunch and dinner", "Personal expenses"],
+    "availableFrom": "2026-03-01",
+    "availableTo": "2026-11-30"
+  }
+]

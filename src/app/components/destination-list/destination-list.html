@@ -1,0 +1,110 @@
+<div class="container">
+  <div style="text-align: center; max-width: 800px; margin: 0 auto 40px auto;">
+    <h1 style="display: block; width: 100%; margin-bottom: 16px;">Explore Destinations</h1>
+    <p class="subtitle" style="display: block; width: 100%;">Discover amazing places around the world</p>
+  </div>
+
+  <!-- Search and Filter Controls - Event Binding Examples -->
+  <div class="controls-section">
+    <div class="search-box">
+      <input 
+        type="text" 
+        placeholder="Search destinations..." 
+        (input)="onSearch($event)"
+        [value]="searchTerm"
+        class="search-input">
+    </div>
+
+    <div class="filter-controls">
+      <label>Filter by Rating:</label>
+      <button 
+        *ngFor="let rating of [0, 3, 4, 5]" 
+        (click)="filterByRating(rating)"
+        [ngClass]="{'active': selectedRating === rating}"
+        class="filter-btn">
+        {{ rating === 0 ? 'All' : rating + '+' }}
+      </button>
+    </div>
+
+    <div class="sort-controls">
+      <label>Sort by:</label>
+      <button 
+        (click)="onSort('name')"
+        [ngClass]="{'active': sortBy === 'name'}"
+        class="sort-btn">Name</button>
+      <button 
+        (click)="onSort('rating')"
+        [ngClass]="{'active': sortBy === 'rating'}"
+        class="sort-btn">Rating</button>
+      <button 
+        (click)="onSort('country')"
+        [ngClass]="{'active': sortBy === 'country'}"
+        class="sort-btn">Country</button>
+    </div>
+
+    <div class="view-toggle">
+      <button (click)="toggleViewMode()" class="view-btn">
+        <mat-icon>{{ viewMode === 'grid' ? 'view_list' : 'view_module' }}</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="results-info" [ngStyle]="{'color': filteredDestinations.length === 0 ? '#f44336' : '#4caf50'}">
+    Found {{ filteredDestinations.length }} destination(s)
+  </div>
+
+  <!-- ngClass and ngStyle directives for dynamic styling -->
+  <div 
+    [ngClass]="{'destinations-grid': viewMode === 'grid', 'destinations-list': viewMode === 'list'}">
+    @for (destination of filteredDestinations; track destination.id) {
+      <mat-card 
+        class="destination-card"
+        [ngClass]="{'hovered': hoveredCardId === destination.id, 'high-rating': destination.rating >= 4.5}"
+        [ngStyle]="{'box-shadow': '0 ' + getCardElevation(destination.id) + ' 24px rgba(0,0,0,0.15)'}"
+        (mouseenter)="onCardHover(destination.id)"
+        (mouseleave)="onCardHover(null)">
+        <img mat-card-image [src]="destination.imageUrl" [alt]="destination.name" />
+        <mat-card-header>
+          <mat-card-title>{{ destination.name }}, {{ destination.country }}</mat-card-title>
+          <mat-card-subtitle>
+            <!-- ngFor with rating stars -->
+            <span class="rating-stars">
+              <mat-icon 
+                *ngFor="let star of getRatingStars(destination.rating)" 
+                class="rating-icon"
+                [ngStyle]="{'color': destination.rating >= 4.5 ? '#ffd700' : '#ffa726'}">star</mat-icon>
+            </span>
+            <span [ngStyle]="{'font-weight': destination.rating >= 4.5 ? 'bold' : 'normal'}">{{ destination.rating }}</span>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ destination.description }}</p>
+          <div class="activities">
+            <strong>Popular Activities:</strong>
+            <mat-chip-set>
+              @for (activity of destination.popularActivities; track activity) {
+                <mat-chip>{{ activity }}</mat-chip>
+              }
+            </mat-chip-set>
+          </div>
+          
+          <div class="packages-section">
+            <h3>Available Packages</h3>
+            @for (pkg of getPackagesForDestination(destination.id); track pkg.id) {
+              <div class="package-item">
+                <div class="package-info">
+                  <strong>{{ pkg.name }}</strong>
+                  <span class="package-duration">{{ pkg.duration }} days</span>
+                </div>
+                <div class="package-price">${{ pkg.price }}</div>
+                <a mat-raised-button color="primary" [routerLink]="['/package', pkg.id]">
+                  View Details
+                </a>
+              </div>
+            }
+          </div>
+        </mat-card-content>
+      </mat-card>
+    }
+  </div>
+</div>

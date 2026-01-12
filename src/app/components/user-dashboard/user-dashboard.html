@@ -1,0 +1,130 @@
+<div class="container">
+  <h1>My Bookings</h1>
+
+  <!-- Filter and Sort Controls -->
+  <div class="controls-section">
+    <div class="filter-controls">
+      <label>Filter by Status:</label>
+      <button 
+        *ngFor="let status of ['all', 'confirmed', 'pending', 'cancelled']"
+        (click)="onFilterStatus(status)"
+        [ngClass]="{'active': filterStatus === status}"
+        class="filter-btn">
+        {{ status | titlecase }}
+      </button>
+    </div>
+
+    <div class="sort-controls">
+      <label>Sort by:</label>
+      <button 
+        (click)="onSort('date')"
+        [ngClass]="{'active': sortBy === 'date'}"
+        class="sort-btn">Date</button>
+      <button 
+        (click)="onSort('price')"
+        [ngClass]="{'active': sortBy === 'price'}"
+        class="sort-btn">Price</button>
+      <button 
+        (click)="onSort('status')"
+        [ngClass]="{'active': sortBy === 'status'}"
+        class="sort-btn">Status</button>
+    </div>
+
+    <div class="view-toggle">
+      <button (click)="toggleViewMode()" class="view-btn">
+        <mat-icon>{{ viewMode === 'grid' ? 'view_list' : 'view_module' }}</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="results-info" [ngStyle]="{'color': filteredBookings.length === 0 ? '#f44336' : '#4caf50'}">
+    Showing {{ filteredBookings.length }} booking(s)
+  </div>
+
+  @if (filteredBookings.length === 0 && filterStatus === 'all') {
+    <mat-card class="empty-state">
+      <mat-card-content>
+        <mat-icon class="empty-icon">inbox</mat-icon>
+        <h2>No bookings yet</h2>
+        <p>Start exploring destinations and book your dream trip!</p>
+        <button mat-raised-button color="primary" routerLink="/destinations">
+          Browse Destinations
+        </button>
+      </mat-card-content>
+    </mat-card>
+  } @else if (filteredBookings.length === 0) {
+    <mat-card class="empty-state">
+      <mat-card-content>
+        <mat-icon class="empty-icon">filter_list</mat-icon>
+        <h2>No bookings match your filter</h2>
+        <p>Try adjusting your filter criteria.</p>
+      </mat-card-content>
+    </mat-card>
+  } @else {
+    <div 
+      [ngClass]="{'bookings-grid': viewMode === 'grid', 'bookings-list': viewMode === 'list'}">
+      @for (booking of filteredBookings; track booking.id) {
+        <mat-card 
+          class="booking-card"
+          [ngClass]="{
+            'selected': selectedBookingId === booking.id,
+            'past-booking': isPastBooking(booking.travelDate),
+            'cancelled-booking': booking.status === 'cancelled'
+          }"
+          (click)="selectBooking(booking.id)">
+          <mat-card-header>
+            <mat-card-title>{{ booking.packageName }}</mat-card-title>
+            <mat-card-subtitle>{{ booking.destinationName }}</mat-card-subtitle>
+          </mat-card-header>
+
+          <mat-card-content>
+            <div class="booking-info">
+              <div class="info-row">
+                <mat-icon>calendar_today</mat-icon>
+                <span><strong>Travel Date:</strong> {{ booking.travelDate | date:'mediumDate' }}</span>
+              </div>
+              
+              <div class="info-row">
+                <mat-icon>people</mat-icon>
+                <span><strong>Travelers:</strong> {{ booking.numberOfTravelers }}</span>
+              </div>
+              
+              <div class="info-row">
+                <mat-icon>attach_money</mat-icon>
+                <span><strong>Total Price:</strong> ${{ booking.totalPrice }}</span>
+              </div>
+              
+              <div class="info-row">
+                <mat-icon>event</mat-icon>
+                <span><strong>Booked On:</strong> {{ booking.bookingDate | date:'mediumDate' }}</span>
+              </div>
+
+              @if (booking.specialRequests) {
+                <div class="info-row special-requests">
+                  <mat-icon>note</mat-icon>
+                  <span><strong>Special Requests:</strong> {{ booking.specialRequests }}</span>
+                </div>
+              }
+
+              <div class="status-row">
+                <mat-chip 
+                  [ngClass]="getStatusClass(booking.status)"
+                  [ngStyle]="getStatusBadgeStyle(booking.status)">
+                  {{ booking.status | uppercase }}
+                </mat-chip>
+              </div>
+            </div>
+          </mat-card-content>
+
+          <mat-card-actions>
+            @if (booking.status === 'confirmed' || booking.status === 'pending') {
+              <button mat-button color="warn" (click)="cancelBooking(booking.id)">
+                <mat-icon>cancel</mat-icon> Cancel Booking
+              </button>
+            }
+          </mat-card-actions>
+        </mat-card>
+      }
+    </div>
+  }
+</div>

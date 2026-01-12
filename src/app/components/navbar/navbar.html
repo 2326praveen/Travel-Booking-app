@@ -1,0 +1,73 @@
+<mat-toolbar 
+  color="primary" 
+  class="navbar"
+  [ngClass]="{'scrolled': isScrolled}"
+  [ngStyle]="{'box-shadow': isScrolled ? '0 4px 12px rgba(0,0,0,0.3)' : '0 2px 4px rgba(0,0,0,0.1)'}">
+  
+  <span class="title" [ngStyle]="{'font-size': isScrolled ? '1.3rem' : '1.5rem'}">
+    {{ title }}
+  </span>
+  
+  <span class="spacer"></span>
+  
+  <!-- Desktop Navigation -->
+  <div class="desktop-nav">
+    <a 
+      mat-button 
+      routerLink="/destinations" 
+      routerLinkActive="active"
+      [ngClass]="{'nav-link': true}"
+      (click)="closeMenu()">
+      <mat-icon>explore</mat-icon>
+      Destinations
+    </a>
+    <a 
+      mat-button 
+      routerLink="/my-bookings" 
+      routerLinkActive="active"
+      [ngClass]="{'nav-link': true}"
+      (click)="closeMenu()">
+      <mat-icon>book_online</mat-icon>
+      My Bookings
+    </a>
+  </div>
+
+  <!-- Mobile Menu Toggle -->
+  <button 
+    mat-icon-button 
+    class="menu-toggle"
+    (click)="toggleMenu()"
+    [ngClass]="{'menu-active': isMenuOpen}">
+    <mat-icon>{{ isMenuOpen ? 'close' : 'menu' }}</mat-icon>
+  </button>
+</mat-toolbar>
+
+<!-- Mobile Navigation Menu -->
+<div 
+  class="mobile-menu"
+  [ngClass]="{'open': isMenuOpen}"
+  [ngStyle]="{'transform': isMenuOpen ? 'translateX(0)' : 'translateX(100%)'}">
+  <a 
+    mat-button 
+    routerLink="/destinations" 
+    routerLinkActive="active"
+    (click)="closeMenu()">
+    <mat-icon>explore</mat-icon>
+    Destinations
+  </a>
+  <a 
+    mat-button 
+    routerLink="/my-bookings" 
+    routerLinkActive="active"
+    (click)="closeMenu()">
+    <mat-icon>book_online</mat-icon>
+    My Bookings
+  </a>
+</div>
+
+<!-- Mobile Overlay -->
+<div 
+  class="mobile-overlay"
+  *ngIf="isMenuOpen"
+  (click)="closeMenu()"
+  [ngStyle]="{'opacity': isMenuOpen ? '1' : '0'}"></div>

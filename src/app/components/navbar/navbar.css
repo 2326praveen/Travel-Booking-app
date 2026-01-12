@@ -1,0 +1,134 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  padding: 8px 16px;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3),
+               1px 1px 2px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.5px;
+  transition: font-size 0.3s ease;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* Desktop Navigation */
+.desktop-nav {
+  display: flex;
+  gap: 8px;
+}
+
+.desktop-nav a {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.desktop-nav a mat-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+a {
+  margin-left: 16px;
+  color: white !important;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: all 0.3s ease;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+a:hover {
+  transform: translateY(-2px);
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.5),
+               1px 1px 3px rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+a.active {
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.25);
+  border-radius: 4px;
+  padding: 8px 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  position: fixed;
+  top: 64px;
+  right: 0;
+  width: 250px;
+  height: calc(100vh - 64px);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  transition: transform 0.3s ease;
+  display: none;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.mobile-menu.open {
+  display: flex;
+}
+
+.mobile-menu a {
+  width: 100%;
+  margin: 8px 0;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.mobile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  transition: opacity 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .menu-toggle.menu-active {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .mobile-menu {
+    display: flex;
+  }
+}
