@@ -45,8 +45,8 @@
             class="meta-item price"
             [ngClass]="getPriceCategory()"
             [ngStyle]="{'font-size': package.price > 5000 ? '1.5rem' : '1.2rem'}">
-            <mat-icon>attach_money</mat-icon>
-            <span>${{ package.price }} per person</span>
+            <mat-icon>currency_rupee</mat-icon>
+            <span>₹{{ package.price | number }} per person</span>
           </div>
         </div>
 

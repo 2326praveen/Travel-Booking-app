@@ -4,12 +4,25 @@
   z-index: 1000;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%) !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .navbar.scrolled {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
   padding: 8px 16px;
+  background: linear-gradient(135deg, #5568d3 0%, #6639a0 50%, #d980e8 100%) !important;
 }
 
 .title {
@@ -19,7 +32,19 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3),
                1px 1px 2px rgba(0, 0, 0, 0.2);
   letter-spacing: 0.5px;
-  transition: font-size 0.3s ease;
+  transition: all 0.4s ease;
+  animation: glow 3s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3),
+                 1px 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8),
+                 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
 }
 
 .spacer {
@@ -30,22 +55,62 @@
 .desktop-nav {
   display: flex;
   gap: 8px;
+  animation: fadeInNav 0.8s ease-out 0.3s backwards;
+}
+
+@keyframes fadeInNav {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .desktop-nav a {
   display: flex;
   align-items: center;
   gap: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.desktop-nav a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: white;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.desktop-nav a:hover::before {
+  width: 100%;
 }
 
 .desktop-nav a mat-icon {
   font-size: 20px;
   width: 20px;
   height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.desktop-nav a:hover mat-icon {
+  transform: rotate(360deg) scale(1.2);
 }
 
 .menu-toggle {
   display: none;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle:hover {
+  transform: rotate(90deg);
 }
 
 a {
@@ -53,13 +118,13 @@ a {
   color: white !important;
   font-weight: 600;
   letter-spacing: 0.3px;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 a:hover {
-  transform: translateY(-2px);
-  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.5),
+  transform: translateY(-2px) scale(1.05);
+  text-shadow: 0 4px 12px rgba(255, 255, 255, 0.6),
                1px 1px 3px rgba(0, 0, 0, 0.3);
   background-color: rgba(255, 255, 255, 0.15) !important;
 }
@@ -70,6 +135,16 @@ a.active {
   border-radius: 4px;
   padding: 8px 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  animation: activeGlow 2s ease-in-out infinite;
+}
+
+@keyframes activeGlow {
+  0%, 100% {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 4px 16px rgba(255, 255, 255, 0.4);
+  }
 }
 
 /* Mobile Menu */
@@ -82,7 +157,7 @@ a.active {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   box-shadow: -4px 0 12px rgba(0, 0, 0, 0.3);
   z-index: 999;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: none;
   flex-direction: column;
   padding: 16px;
@@ -90,6 +165,16 @@ a.active {
 
 .mobile-menu.open {
   display: flex;
+  animation: slideInRight 0.4s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 .mobile-menu a {
@@ -100,7 +185,27 @@ a.active {
   align-items: center;
   gap: 8px;
   border-radius: 4px;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: fadeInItem 0.3s ease forwards;
+  animation-delay: calc(var(--item-index, 0) * 0.1s);
+}
+
+@keyframes fadeInItem {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.mobile-menu a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateX(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .mobile-overlay {
@@ -112,6 +217,17 @@ a.active {
   background: rgba(0, 0, 0, 0.5);
   z-index: 998;
   transition: opacity 0.3s ease;
+  backdrop-filter: blur(3px);
+  animation: fadeInOverlay 0.3s ease;
+}
+
+@keyframes fadeInOverlay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Responsive */
@@ -126,6 +242,7 @@ a.active {
 
   .menu-toggle.menu-active {
     background-color: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
   }
 
   .mobile-menu {

@@ -5,6 +5,16 @@
   min-height: 100vh;
   background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.4)),
               url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1920&q=90&auto=format&fit=crop') center/cover fixed no-repeat;
+  animation: fadeIn 0.6s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .header-actions {
@@ -12,6 +22,18 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
+  animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .back-btn {
@@ -19,37 +41,82 @@
   color: #4a148c !important;
   font-weight: 600 !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+  transition: all 0.3s ease !important;
+}
+
+.back-btn:hover {
+  transform: translateX(-5px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
 }
 
 .favorite-btn {
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s;
+  transition: all 0.3s ease;
+}
+
+.favorite-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
 .favorite-btn mat-icon {
   color: #999;
-  transition: color 0.3s;
+  transition: all 0.3s ease;
 }
 
 .favorite-btn.favorite-active mat-icon {
   color: #e91e63;
+  animation: heartBeat 0.5s ease;
+}
+
+@keyframes heartBeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.3);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  75% {
+    transform: scale(1.25);
+  }
 }
 
 .package-card {
   background: rgba(255, 255, 255, 0.95) !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  animation: slideUp 0.7s ease-out 0.2s backwards;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 /* Image Gallery */
 .image-gallery {
   position: relative;
+  overflow: hidden;
 }
 
 .main-image {
   height: 400px;
   object-fit: cover;
   width: 100%;
+  transition: transform 0.5s ease;
+}
+
+.main-image:hover {
+  transform: scale(1.05);
 }
 
 .thumbnail-container {
@@ -67,17 +134,33 @@
   cursor: pointer;
   border: 3px solid transparent;
   border-radius: 4px;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: thumbnailFadeIn 0.4s ease forwards;
+  animation-delay: calc(var(--thumb-index, 0) * 0.1s);
+}
+
+@keyframes thumbnailFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .thumbnail:hover {
   border-color: #1976d2;
-  transform: scale(1.05);
+  transform: scale(1.15) translateY(-5px);
+  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.5);
 }
 
 .thumbnail.selected-thumbnail {
   border-color: #1976d2;
   box-shadow: 0 2px 8px rgba(25, 118, 210, 0.4);
+  transform: scale(1.1);
 }
 
 mat-card-header {
@@ -100,8 +183,9 @@ mat-card-header {
   gap: 32px;
   margin-bottom: 24px;
   padding: 16px;
-  background-color: #f5f5f5;
-  border-radius: 4px;
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+  border-radius: 8px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .meta-item {
@@ -109,12 +193,38 @@ mat-card-header {
   align-items: center;
   gap: 8px;
   font-size: 1.1rem;
-  transition: all 0.3s;
+  transition: all 0.4s ease;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.meta-item:hover {
+  transform: translateY(-3px) scale(1.05);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.meta-item mat-icon {
+  transition: transform 0.3s ease;
+}
+
+.meta-item:hover mat-icon {
+  transform: rotate(360deg);
 }
 
 .meta-item.price {
   color: #1976d2;
   font-weight: bold;
+  animation: priceHighlight 2s ease-in-out infinite;
+}
+
+@keyframes priceHighlight {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(25, 118, 210, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(25, 118, 210, 0.6);
+  }
 }
 
 .meta-item.budget {
@@ -144,19 +254,28 @@ mat-card-header {
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  padding: 12px;
-  background: #f5f5f5;
-  border-radius: 4px;
-  transition: background 0.3s;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+  border-radius: 8px;
+  transition: all 0.3s ease;
   user-select: none;
+  border-left: 4px solid transparent;
 }
 
 .section-header:hover {
-  background: #e0e0e0;
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  border-left-color: #1976d2;
+  transform: translateX(5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .section-header mat-icon {
-  transition: transform 0.3s;
+  transition: transform 0.4s ease;
+  color: #1976d2;
+}
+
+.section-header:hover mat-icon {
+  transform: scale(1.2);
 }
 
 .section h2 {

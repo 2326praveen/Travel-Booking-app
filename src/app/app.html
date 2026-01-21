@@ -2,6 +2,16 @@
 <main class="app-container">
   <router-outlet></router-outlet>
 </main>
+
+<!-- Scroll to Top Button -->
+<button 
+  class="scroll-to-top"
+  [class.show]="showScrollTop"
+  (click)="scrollToTop()"
+  aria-label="Scroll to top">
+  <mat-icon>arrow_upward</mat-icon>
+</button>
+
 <footer class="app-footer">
   <div class="footer-content">
     <div class="footer-section">
@@ -25,4 +35,3 @@
     <p>&copy; 2026 Travel Explorer. All rights reserved.</p>
   </div>
 </footer>
-

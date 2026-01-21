@@ -5,7 +5,7 @@
     "name": "Romantic Paris Getaway",
     "description": "Experience the romance of Paris with guided tours and fine dining.",
     "duration": 5,
-    "price": 1899,
+    "price": 157617,
     "imageUrl": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800",
     "itinerary": [
       "Day 1: Arrival and Eiffel Tower visit",
@@ -25,7 +25,7 @@
     "name": "Tokyo Adventure",
     "description": "Discover the best of Tokyo from ancient temples to modern technology.",
     "duration": 7,
-    "price": 2499,
+    "price": 207417,
     "imageUrl": "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800",
     "itinerary": [
       "Day 1: Arrival and Shibuya exploration",
@@ -47,7 +47,7 @@
     "name": "New York City Explorer",
     "description": "See the iconic sights of the Big Apple.",
     "duration": 4,
-    "price": 1599,
+    "price": 132717,
     "imageUrl": "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800",
     "itinerary": [
       "Day 1: Arrival and Times Square",
@@ -66,7 +66,7 @@
     "name": "Bali Beach Paradise",
     "description": "Relax on pristine beaches and explore cultural wonders.",
     "duration": 6,
-    "price": 1299,
+    "price": 107817,
     "imageUrl": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800",
     "itinerary": [
       "Day 1: Arrival and beach relaxation",
@@ -87,7 +87,7 @@
     "name": "Dubai Luxury Experience",
     "description": "Experience the height of luxury in this modern desert city.",
     "duration": 5,
-    "price": 2299,
+    "price": 190817,
     "imageUrl": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800",
     "itinerary": [
       "Day 1: Arrival and Burj Khalifa",
@@ -100,5 +100,306 @@
     "exclusions": ["International flights", "Lunch and dinner", "Personal expenses"],
     "availableFrom": "2026-03-01",
     "availableTo": "2026-11-30"
+  },
+  {
+    "id": 6,
+    "destinationId": 6,
+    "name": "Santorini Sunset Romance",
+    "description": "Experience the magic of Santorini's sunsets and pristine white villages.",
+    "duration": 5,
+    "price": 149317,
+    "imageUrl": "https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=800",
+    "itinerary": [
+      "Day 1: Arrival and Oia sunset viewing",
+      "Day 2: Wine tasting tour in traditional wineries",
+      "Day 3: Catamaran cruise around the island",
+      "Day 4: Visit Akrotiri archaeological site",
+      "Day 5: Beach day and departure"
+    ],
+    "inclusions": ["Boutique hotel with caldera view", "Daily breakfast", "Sunset cruise", "Wine tasting", "Airport transfers"],
+    "exclusions": ["International flights", "Lunch and dinner", "Personal shopping"],
+    "availableFrom": "2026-04-15",
+    "availableTo": "2026-10-31"
+  },
+  {
+    "id": 7,
+    "destinationId": 6,
+    "name": "Greek Island Hopper",
+    "description": "Explore Santorini and nearby islands on this multi-island adventure.",
+    "duration": 8,
+    "price": 207417,
+    "imageUrl": "https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=800",
+    "itinerary": [
+      "Day 1-2: Santorini exploration",
+      "Day 3-4: Ferry to Mykonos and beach clubs",
+      "Day 5-6: Explore Naxos island",
+      "Day 7: Return to Santorini",
+      "Day 8: Departure"
+    ],
+    "inclusions": ["Hotel accommodations", "Daily breakfast", "Island ferry passes", "Guided tours"],
+    "exclusions": ["International flights", "Lunch and dinner", "Activities and entrance fees"],
+    "availableFrom": "2026-05-01",
+    "availableTo": "2026-09-30"
+  },
+  {
+    "id": 8,
+    "destinationId": 7,
+    "name": "Maldives Luxury Escape",
+    "description": "Ultimate luxury experience with overwater villas and world-class diving.",
+    "duration": 7,
+    "price": 331917,
+    "imageUrl": "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800",
+    "itinerary": [
+      "Day 1: Seaplane transfer to resort",
+      "Day 2-3: Snorkeling and diving expeditions",
+      "Day 4: Spa day and beach relaxation",
+      "Day 5: Private island picnic",
+      "Day 6: Sunset cruise and fine dining",
+      "Day 7: Departure"
+    ],
+    "inclusions": ["Overwater villa accommodation", "All meals included", "Spa treatments", "Water sports", "Seaplane transfers"],
+    "exclusions": ["International flights", "Alcoholic beverages", "Premium diving courses"],
+    "availableFrom": "2026-01-01",
+    "availableTo": "2026-12-31"
+  },
+  {
+    "id": 9,
+    "destinationId": 7,
+    "name": "Maldives Honeymoon Special",
+    "description": "Perfect romantic getaway for newlyweds with exclusive experiences.",
+    "duration": 5,
+    "price": 290417,
+    "imageUrl": "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800",
+    "itinerary": [
+      "Day 1: Private arrival and champagne welcome",
+      "Day 2: Couples spa and romantic dinner",
+      "Day 3: Private yacht excursion",
+      "Day 4: Underwater restaurant experience",
+      "Day 5: Sunrise breakfast and departure"
+    ],
+    "inclusions": ["Luxury villa with pool", "All meals", "Couples spa package", "Romantic extras", "Private transfers"],
+    "exclusions": ["International flights", "Premium activities", "Personal purchases"],
+    "availableFrom": "2026-02-01",
+    "availableTo": "2026-11-30"
+  },
+  {
+    "id": 10,
+    "destinationId": 8,
+    "name": "Rome Ancient Wonders",
+    "description": "Journey through 2,000 years of history in the Eternal City.",
+    "duration": 5,
+    "price": 124417,
+    "imageUrl": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800",
+    "itinerary": [
+      "Day 1: Arrival and Colosseum tour",
+      "Day 2: Vatican Museums and Sistine Chapel",
+      "Day 3: Roman Forum and Palatine Hill",
+      "Day 4: Trastevere food tour",
+      "Day 5: Trevi Fountain and departure"
+    ],
+    "inclusions": ["Centrally located hotel", "Daily breakfast", "Skip-the-line tickets", "Guided tours", "Food tour"],
+    "exclusions": ["International flights", "Lunch and dinner (except food tour)", "Gratuities"],
+    "availableFrom": "2026-03-15",
+    "availableTo": "2026-11-15"
+  },
+  {
+    "id": 11,
+    "destinationId": 9,
+    "name": "Barcelona Culture & Beach",
+    "description": "Perfect blend of Gaudí's masterpieces, beaches, and tapas culture.",
+    "duration": 6,
+    "price": 141017,
+    "imageUrl": "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=800",
+    "itinerary": [
+      "Day 1: Arrival and La Rambla stroll",
+      "Day 2: Sagrada Familia and Park Güell",
+      "Day 3: Gothic Quarter walking tour",
+      "Day 4: Beach day at Barceloneta",
+      "Day 5: Montjuïc and tapas tour",
+      "Day 6: Casa Batlló and departure"
+    ],
+    "inclusions": ["4-star hotel accommodation", "Daily breakfast", "Attraction tickets", "Tapas tour", "Metro passes"],
+    "exclusions": ["International flights", "Lunch and dinner", "Optional activities"],
+    "availableFrom": "2026-04-01",
+    "availableTo": "2026-10-31"
+  },
+  {
+    "id": 12,
+    "destinationId": 10,
+    "name": "Iceland Northern Lights",
+    "description": "Chase the Aurora Borealis in Iceland's stunning winter landscape.",
+    "duration": 5,
+    "price": 190817,
+    "imageUrl": "https://images.unsplash.com/photo-1504829857797-ddff29c27927?w=800",
+    "itinerary": [
+      "Day 1: Arrival and Northern Lights hunt",
+      "Day 2: Golden Circle tour",
+      "Day 3: Blue Lagoon and lava fields",
+      "Day 4: Glacier hiking adventure",
+      "Day 5: Reykjavik city tour and departure"
+    ],
+    "inclusions": ["Hotel accommodation", "Daily breakfast", "Northern Lights tours", "Golden Circle tour", "Blue Lagoon entry"],
+    "exclusions": ["International flights", "Lunch and dinner", "Winter gear rental"],
+    "availableFrom": "2026-09-15",
+    "availableTo": "2027-03-31"
+  },
+  {
+    "id": 13,
+    "destinationId": 10,
+    "name": "Iceland Summer Adventure",
+    "description": "Explore Iceland's midnight sun, waterfalls, and geothermal wonders.",
+    "duration": 7,
+    "price": 215717,
+    "imageUrl": "https://images.unsplash.com/photo-1504829857797-ddff29c27927?w=800",
+    "itinerary": [
+      "Day 1: Arrival in Reykjavik",
+      "Day 2-3: South Coast waterfalls and black beaches",
+      "Day 4: Jökulsárlón Glacier Lagoon",
+      "Day 5: Golden Circle highlights",
+      "Day 6: Snæfellsnes Peninsula",
+      "Day 7: Blue Lagoon and departure"
+    ],
+    "inclusions": ["Hotel accommodations", "Daily breakfast", "Rental car", "Blue Lagoon", "Activity guides"],
+    "exclusions": ["International flights", "Meals", "Fuel for rental car"],
+    "availableFrom": "2026-05-01",
+    "availableTo": "2026-09-15"
+  },
+  {
+    "id": 14,
+    "destinationId": 11,
+    "name": "Machu Picchu Trek",
+    "description": "Hike the legendary Inca Trail to the Lost City of the Incas.",
+    "duration": 8,
+    "price": 182517,
+    "imageUrl": "https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=800",
+    "itinerary": [
+      "Day 1-2: Arrive Cusco and acclimatization",
+      "Day 3-6: Classic Inca Trail trek to Machu Picchu",
+      "Day 7: Explore Machu Picchu ruins",
+      "Day 8: Return to Cusco and departure"
+    ],
+    "inclusions": ["Hotels and camping", "All meals during trek", "Professional guides", "Porters", "Entrance permits"],
+    "exclusions": ["International flights", "Meals in Cusco", "Trekking gear", "Tips"],
+    "availableFrom": "2026-04-01",
+    "availableTo": "2026-10-31"
+  },
+  {
+    "id": 15,
+    "destinationId": 12,
+    "name": "Swiss Alps Winter Ski",
+    "description": "World-class skiing in the magnificent Swiss Alps.",
+    "duration": 7,
+    "price": 240617,
+    "imageUrl": "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800",
+    "itinerary": [
+      "Day 1: Arrival in Zermatt",
+      "Day 2-5: Skiing at Matterhorn paradise",
+      "Day 6: Gornergrat railway and glacier view",
+      "Day 7: Departure"
+    ],
+    "inclusions": ["Alpine chalet accommodation", "Daily breakfast", "6-day ski pass", "Ski equipment rental", "Cable car access"],
+    "exclusions": ["International flights", "Lunch and dinner", "Ski lessons", "Travel insurance"],
+    "availableFrom": "2026-12-01",
+    "availableTo": "2027-03-31"
+  },
+  {
+    "id": 16,
+    "destinationId": 13,
+    "name": "Thailand Island Paradise",
+    "description": "Explore Thailand's most beautiful islands and beaches.",
+    "duration": 10,
+    "price": 157617,
+    "imageUrl": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800",
+    "itinerary": [
+      "Day 1-2: Bangkok temples and street food",
+      "Day 3-5: Phuket beaches and island tours",
+      "Day 6-8: Phi Phi Islands snorkeling",
+      "Day 9: Krabi limestone cliffs",
+      "Day 10: Return to Bangkok and departure"
+    ],
+    "inclusions": ["Hotel accommodations", "Daily breakfast", "Island transfers", "Snorkeling tours", "Thai cooking class"],
+    "exclusions": ["International flights", "Lunch and dinner", "Optional activities"],
+    "availableFrom": "2026-01-15",
+    "availableTo": "2026-12-15"
+  },
+  {
+    "id": 17,
+    "destinationId": 14,
+    "name": "Sydney Highlights",
+    "description": "Discover Sydney's iconic landmarks and stunning coastal beauty.",
+    "duration": 6,
+    "price": 165917,
+    "imageUrl": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=800",
+    "itinerary": [
+      "Day 1: Arrival and Harbour Bridge",
+      "Day 2: Opera House tour and harbour cruise",
+      "Day 3: Bondi Beach and coastal walk",
+      "Day 4: Blue Mountains day trip",
+      "Day 5: Taronga Zoo and Manly ferry",
+      "Day 6: Darling Harbour and departure"
+    ],
+    "inclusions": ["4-star hotel accommodation", "Daily breakfast", "Harbour cruise", "Blue Mountains tour", "Zoo entry"],
+    "exclusions": ["International flights", "Lunch and dinner", "Optional activities"],
+    "availableFrom": "2026-02-01",
+    "availableTo": "2026-11-30"
+  },
+  {
+    "id": 18,
+    "destinationId": 15,
+    "name": "Kenya Safari Adventure",
+    "description": "Witness the Great Migration and spot the Big Five on an unforgettable safari.",
+    "duration": 8,
+    "price": 290417,
+    "imageUrl": "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800",
+    "itinerary": [
+      "Day 1: Arrive Nairobi and orientation",
+      "Day 2-4: Masai Mara game drives",
+      "Day 5: Hot air balloon safari",
+      "Day 6-7: Amboseli National Park",
+      "Day 8: Return to Nairobi and departure"
+    ],
+    "inclusions": ["Safari lodge accommodation", "All meals", "Game drives", "Hot air balloon", "Professional guides", "Park fees"],
+    "exclusions": ["International flights", "Alcoholic beverages", "Tips for guides", "Travel insurance"],
+    "availableFrom": "2026-07-01",
+    "availableTo": "2026-10-31"
+  },
+  {
+    "id": 19,
+    "destinationId": 1,
+    "name": "Paris Food & Wine Tour",
+    "description": "Culinary journey through Paris with wine tasting and cooking classes.",
+    "duration": 4,
+    "price": 132717,
+    "imageUrl": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800",
+    "itinerary": [
+      "Day 1: Arrival and gourmet dinner",
+      "Day 2: French cooking class",
+      "Day 3: Champagne region day trip",
+      "Day 4: Market tour and departure"
+    ],
+    "inclusions": ["Boutique hotel", "Daily breakfast", "Cooking class", "Wine tastings", "Food tours"],
+    "exclusions": ["International flights", "Some dinners", "Personal expenses"],
+    "availableFrom": "2026-04-01",
+    "availableTo": "2026-10-31"
+  },
+  {
+    "id": 20,
+    "destinationId": 3,
+    "name": "NYC Broadway & Museums",
+    "description": "Experience the best of New York's culture, theater, and world-class museums.",
+    "duration": 5,
+    "price": 149317,
+    "imageUrl": "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=800",
+    "itinerary": [
+      "Day 1: Arrival and Times Square",
+      "Day 2: MoMA and Broadway show",
+      "Day 3: Metropolitan Museum and Central Park",
+      "Day 4: 9/11 Memorial and One World Observatory",
+      "Day 5: Shopping Fifth Avenue and departure"
+    ],
+    "inclusions": ["4-star Manhattan hotel", "Daily breakfast", "Broadway tickets", "Museum passes", "City tours"],
+    "exclusions": ["International flights", "Lunch and dinner", "Shopping"],
+    "availableFrom": "2026-01-15",
+    "availableTo": "2026-12-31"
   }
 ]

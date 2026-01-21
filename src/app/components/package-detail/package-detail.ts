@@ -97,8 +97,8 @@ export class PackageDetailComponent implements OnInit {
   // Helper for ngClass
   getPriceCategory(): string {
     if (!this.package) return '';
-    if (this.package.price < 1000) return 'budget';
-    if (this.package.price < 3000) return 'mid-range';
+    if (this.package.price < 125000) return 'budget';
+    if (this.package.price < 250000) return 'mid-range';
     return 'luxury';
   }
 }

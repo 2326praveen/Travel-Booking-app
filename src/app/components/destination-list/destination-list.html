@@ -96,7 +96,7 @@
                   <strong>{{ pkg.name }}</strong>
                   <span class="package-duration">{{ pkg.duration }} days</span>
                 </div>
-                <div class="package-price">${{ pkg.price }}</div>
+                <div class="package-price">₹{{ pkg.price | number }}</div>
                 <a mat-raised-button color="primary" [routerLink]="['/package', pkg.id]">
                   View Details
                 </a>

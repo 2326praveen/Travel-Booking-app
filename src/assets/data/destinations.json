@@ -43,5 +43,95 @@
     "imageUrl": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800",
     "rating": 4.5,
     "popularActivities": ["Burj Khalifa", "Desert Safari", "Dubai Mall"]
+  },
+  {
+    "id": 6,
+    "name": "Santorini",
+    "country": "Greece",
+    "description": "Stunning island paradise with iconic white buildings, blue domes, and breathtaking sunsets.",
+    "imageUrl": "https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=800",
+    "rating": 4.9,
+    "popularActivities": ["Sunset Cruise", "Wine Tasting", "Beach Exploration", "Ancient Ruins"]
+  },
+  {
+    "id": 7,
+    "name": "Maldives",
+    "country": "Maldives",
+    "description": "Tropical heaven with crystal-clear waters, luxury overwater villas, and vibrant coral reefs.",
+    "imageUrl": "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800",
+    "rating": 4.9,
+    "popularActivities": ["Snorkeling", "Diving", "Spa Treatments", "Island Hopping"]
+  },
+  {
+    "id": 8,
+    "name": "Rome",
+    "country": "Italy",
+    "description": "Eternal city filled with ancient history, magnificent architecture, and world-class cuisine.",
+    "imageUrl": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800",
+    "rating": 4.7,
+    "popularActivities": ["Colosseum Tour", "Vatican Museums", "Trevi Fountain", "Roman Forum"]
+  },
+  {
+    "id": 9,
+    "name": "Barcelona",
+    "country": "Spain",
+    "description": "Vibrant coastal city with unique Gaudí architecture, beaches, and incredible food scene.",
+    "imageUrl": "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=800",
+    "rating": 4.8,
+    "popularActivities": ["Sagrada Familia", "Park Güell", "La Rambla", "Beach Clubs"]
+  },
+  {
+    "id": 10,
+    "name": "Iceland",
+    "country": "Iceland",
+    "description": "Land of fire and ice with stunning waterfalls, glaciers, geysers, and Northern Lights.",
+    "imageUrl": "https://images.unsplash.com/photo-1504829857797-ddff29c27927?w=800",
+    "rating": 4.8,
+    "popularActivities": ["Blue Lagoon", "Golden Circle", "Northern Lights", "Glacier Hiking"]
+  },
+  {
+    "id": 11,
+    "name": "Machu Picchu",
+    "country": "Peru",
+    "description": "Ancient Incan citadel set high in the Andes Mountains, a UNESCO World Heritage site.",
+    "imageUrl": "https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=800",
+    "rating": 4.9,
+    "popularActivities": ["Ruins Tour", "Inca Trail Hiking", "Sacred Valley", "Rainbow Mountain"]
+  },
+  {
+    "id": 12,
+    "name": "Swiss Alps",
+    "country": "Switzerland",
+    "description": "Majestic mountain paradise perfect for skiing, hiking, and breathtaking scenery.",
+    "imageUrl": "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=800",
+    "rating": 4.8,
+    "popularActivities": ["Skiing", "Mountain Hiking", "Cable Car Rides", "Swiss Villages"]
+  },
+  {
+    "id": 13,
+    "name": "Thailand",
+    "country": "Thailand",
+    "description": "Exotic Southeast Asian destination with beautiful temples, beaches, and vibrant street food.",
+    "imageUrl": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800",
+    "rating": 4.7,
+    "popularActivities": ["Temple Visits", "Street Food Tours", "Island Hopping", "Thai Massage"]
+  },
+  {
+    "id": 14,
+    "name": "Sydney",
+    "country": "Australia",
+    "description": "Iconic harbor city with stunning beaches, world-famous opera house, and vibrant culture.",
+    "imageUrl": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=800",
+    "rating": 4.8,
+    "popularActivities": ["Opera House Tour", "Harbour Bridge Climb", "Bondi Beach", "Coastal Walks"]
+  },
+  {
+    "id": 15,
+    "name": "Safari Kenya",
+    "country": "Kenya",
+    "description": "Experience the ultimate African safari with the Big Five and the Great Migration.",
+    "imageUrl": "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=800",
+    "rating": 4.9,
+    "popularActivities": ["Wildlife Safari", "Masai Mara", "Hot Air Balloon", "Cultural Tours"]
   }
 ]
