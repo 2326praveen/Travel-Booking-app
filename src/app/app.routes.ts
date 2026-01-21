@@ -9,6 +9,5 @@ export const routes: Routes = [
   { path: 'destinations', component: DestinationListComponent },
   { path: 'package/:id', component: PackageDetailComponent },
   { path: 'booking/:packageId', component: BookingFormComponent },
-  { path: 'my-bookings', component: UserDashboardComponent },
-  { path: '**', redirectTo: '/destinations' }
+  { path: 'my-bookings', component: UserDashboardComponent }
 ];

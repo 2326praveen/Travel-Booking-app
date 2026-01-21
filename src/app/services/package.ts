@@ -1,35 +1,23 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Package } from '../models';
+import packagesData from '../../assets/data/packages.json';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PackageService {
-  private dataUrl = '/assets/data/packages.json';
-
-  constructor(private http: HttpClient) {}
+  private packages: Package[] = packagesData as Package[];
 
   getPackages(): Observable<Package[]> {
-    return this.http.get<Package[]>(this.dataUrl);
+    return of(this.packages);
   }
 
   getPackageById(id: number): Observable<Package | undefined> {
-    return new Observable(observer => {
-      this.getPackages().subscribe(packages => {
-        observer.next(packages.find(p => p.id === id));
-        observer.complete();
-      });
-    });
+    return of(this.packages.find(p => p.id === id));
   }
 
   getPackagesByDestination(destinationId: number): Observable<Package[]> {
-    return new Observable(observer => {
-      this.getPackages().subscribe(packages => {
-        observer.next(packages.filter(p => p.destinationId === destinationId));
-        observer.complete();
-      });
-    });
+    return of(this.packages.filter(p => p.destinationId === destinationId));
   }
 }
