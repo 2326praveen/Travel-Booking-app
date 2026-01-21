@@ -37,29 +37,3 @@ export class BookingService {
     return of(false);
   }
 }
-      this.saveToLocalStorage();
-      this.bookingsSubject.next(this.bookings);
-      observer.next(newBooking);
-      observer.complete();
-    });
-  }
-
-  cancelBooking(id: number): Observable<boolean> {
-    return new Observable(observer => {
-      const booking = this.bookings.find(b => b.id === id);
-      if (booking) {
-        booking.status = 'cancelled';
-        this.saveToLocalStorage();
-        this.bookingsSubject.next(this.bookings);
-        observer.next(true);
-      } else {
-        observer.next(false);
-      }
-      observer.complete();
-    });
-  }
-
-  private saveToLocalStorage(): void {
-    localStorage.setItem('bookings', JSON.stringify(this.bookings));
-  }
-}

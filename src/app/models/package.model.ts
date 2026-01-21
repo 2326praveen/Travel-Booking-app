@@ -9,6 +9,6 @@ export interface Package {
   itinerary: string[];
   inclusions: string[];
   exclusions: string[];
-  availableFrom: Date;
-  availableTo: Date;
+  availableFrom: string;
+  availableTo: string;
 }
