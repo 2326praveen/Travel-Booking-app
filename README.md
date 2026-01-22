@@ -122,6 +122,13 @@ npm test
 - numberOfTravelers, travelDate
 - specialRequests, totalPrice
 - bookingDate, status
+- 
+## 👤 Author
+
+- Github: [Nihitha](https://github.com/Nihitha47)
+- GitHub: [Darain](https://github.com/Darain-Brit-A)
+- GitHub: [Praveen](https://github.com/2326praveen)
+- GitHub: [Anush](https://github.com/anushjowin)
 
 ## Additional Resources
 
