@@ -11,7 +11,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { PackageService } from '../../services/package';
 import { BookingService } from '../../services/booking';
-import { Package, Booking } from '../../models';
+import { Package, CreateBookingDto, BookingStatus } from '../../models';
 
 @Component({
   selector: 'app-booking-form',
@@ -35,6 +35,8 @@ export class BookingFormComponent implements OnInit {
   package: Package | null = null;
   minDate = new Date();
   maxDate = new Date(new Date().setFullYear(new Date().getFullYear() + 1));
+  private readonly MIN_TRAVELERS = 1;
+  private readonly MAX_TRAVELERS = 10;
 
   constructor(
     private fb: FormBuilder,
@@ -49,7 +51,7 @@ export class BookingFormComponent implements OnInit {
     const packageId = Number(this.route.snapshot.paramMap.get('packageId'));
     
     this.packageService.getPackageById(packageId).subscribe(pkg => {
-      this.package = pkg || null;
+      this.package = pkg;
       if (pkg) {
         const availableFrom = new Date(pkg.availableFrom);
         const availableTo = new Date(pkg.availableTo);
@@ -62,7 +64,7 @@ export class BookingFormComponent implements OnInit {
       fullName: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
-      numberOfTravelers: [1, [Validators.required, Validators.min(1), Validators.max(10)]],
+      numberOfTravelers: [1, [Validators.required, Validators.min(this.MIN_TRAVELERS), Validators.max(this.MAX_TRAVELERS)]],
       travelDate: ['', Validators.required],
       specialRequests: ['']
     });
@@ -77,21 +79,19 @@ export class BookingFormComponent implements OnInit {
   onSubmit(): void {
     if (this.bookingForm.valid && this.package) {
       const formValue = this.bookingForm.value;
-      const booking: Booking = {
-        id: Date.now(),
+      const bookingData: CreateBookingDto = {
         userId: 1, // Mock user ID
         packageId: this.package.id,
         packageName: this.package.name,
         destinationName: '', // Will be set by service
-        numberOfTravelers: formValue.numberOfTravelers,
-        travelDate: formValue.travelDate,
-        specialRequests: formValue.specialRequests,
+        numberOfTravelers: formValue.numberOfTravelers as number,
+        travelDate: formValue.travelDate as Date,
+        specialRequests: formValue.specialRequests as string | undefined,
         totalPrice: this.totalPrice,
-        bookingDate: new Date(),
-        status: 'confirmed'
+        status: BookingStatus.Pending
       };
 
-      this.bookingService.createBooking(booking).subscribe(() => {
+      this.bookingService.createBooking(bookingData).subscribe(() => {
         this.snackBar.open('Booking confirmed successfully!', 'Close', {
           duration: 3000,
           horizontalPosition: 'center',

@@ -7,7 +7,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
 import { PackageService } from '../../services/package';
 import { DestinationService } from '../../services/destination';
-import { Package, Destination } from '../../models';
+import { Package, Destination, PriceCategory, getPriceCategory } from '../../models';
+
+type SectionType = 'itinerary' | 'inclusions' | 'exclusions';
 
 @Component({
   selector: 'app-package-detail',
@@ -23,7 +25,7 @@ export class PackageDetailComponent implements OnInit {
   showItinerary: boolean = true;
   showInclusions: boolean = true;
   showExclusions: boolean = true;
-  imageGallery: string[] = [];
+  readonly imageGallery: string[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -35,17 +37,17 @@ export class PackageDetailComponent implements OnInit {
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.packageService.getPackageById(id).subscribe(pkg => {
-      this.package = pkg || null;
+      this.package = pkg;
       if (pkg) {
         this.selectedImage = pkg.imageUrl;
         // Mock additional images for gallery
-        this.imageGallery = [
+        (this.imageGallery as string[]).push(
           pkg.imageUrl,
           pkg.imageUrl.replace('?w=800', '?w=800&h=600&fit=crop&auto=format'),
           pkg.imageUrl.replace('?w=800', '?w=800&h=600&fit=crop&auto=format&crop=top')
-        ];
+        );
         this.destinationService.getDestinationById(pkg.destinationId).subscribe(dest => {
-          this.destination = dest || null;
+          this.destination = dest;
         });
       }
     });
@@ -68,7 +70,7 @@ export class PackageDetailComponent implements OnInit {
   }
 
   // Event binding - toggle sections
-  toggleSection(section: 'itinerary' | 'inclusions' | 'exclusions'): void {
+  toggleSection(section: SectionType): void {
     switch (section) {
       case 'itinerary':
         this.showItinerary = !this.showItinerary;
@@ -95,10 +97,8 @@ export class PackageDetailComponent implements OnInit {
   }
 
   // Helper for ngClass
-  getPriceCategory(): string {
+  getPriceCategory(): PriceCategory | '' {
     if (!this.package) return '';
-    if (this.package.price < 125000) return 'budget';
-    if (this.package.price < 250000) return 'mid-range';
-    return 'luxury';
+    return getPriceCategory(this.package.price);
   }
 }

@@ -6,7 +6,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { BookingService } from '../../services/booking';
-import { Booking } from '../../models';
+import { Booking, BookingStatus, ViewMode } from '../../models';
+
+type FilterStatus = 'all' | BookingStatus;
+type SortByType = 'date' | 'price' | 'status';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -22,12 +25,15 @@ import { Booking } from '../../models';
   styleUrl: './user-dashboard.css',
 })
 export class UserDashboardComponent implements OnInit {
-  bookings: Booking[] = [];
+  bookings: readonly Booking[] = [];
   filteredBookings: Booking[] = [];
-  filterStatus: string = 'all';
-  sortBy: 'date' | 'price' | 'status' = 'date';
-  viewMode: 'grid' | 'list' = 'grid';
+  filterStatus: FilterStatus = 'all';
+  sortBy: SortByType = 'date';
+  viewMode: ViewMode = 'grid';
   selectedBookingId: number | null = null;
+  
+  // Expose enum to template
+  readonly BookingStatus = BookingStatus;
 
   constructor(
     private bookingService: BookingService,
@@ -58,7 +64,7 @@ export class UserDashboardComponent implements OnInit {
 
   // Event binding - filter by status
   onFilterStatus(status: string): void {
-    this.filterStatus = status;
+    this.filterStatus = status as FilterStatus;
     this.applyFilters();
   }
 

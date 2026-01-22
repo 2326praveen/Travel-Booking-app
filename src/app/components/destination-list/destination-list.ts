@@ -7,7 +7,9 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { DestinationService } from '../../services/destination';
 import { PackageService } from '../../services/package';
-import { Destination, Package } from '../../models';
+import { Destination, Package, Rating, ViewMode } from '../../models';
+
+type SortByType = 'name' | 'rating' | 'country';
 
 @Component({
   selector: 'app-destination-list',
@@ -16,13 +18,13 @@ import { Destination, Package } from '../../models';
   styleUrl: './destination-list.css',
 })
 export class DestinationListComponent implements OnInit {
-  destinations: Destination[] = [];
+  destinations: readonly Destination[] = [];
   filteredDestinations: Destination[] = [];
-  packages: Package[] = [];
+  packages: readonly Package[] = [];
   searchTerm: string = '';
   selectedRating: number = 0;
-  sortBy: 'name' | 'rating' | 'country' = 'name';
-  viewMode: 'grid' | 'list' = 'grid';
+  sortBy: SortByType = 'name';
+  viewMode: ViewMode = 'grid';
   hoveredCardId: number | null = null;
 
   constructor(
@@ -33,7 +35,7 @@ export class DestinationListComponent implements OnInit {
   ngOnInit(): void {
     this.destinationService.getDestinations().subscribe(destinations => {
       this.destinations = destinations;
-      this.filteredDestinations = destinations;
+      this.filteredDestinations = [...destinations];
     });
     
     this.packageService.getPackages().subscribe(packages => {
@@ -53,12 +55,12 @@ export class DestinationListComponent implements OnInit {
 
   // Event binding - filter by rating
   filterByRating(rating: number): void {
-    this.selectedRating = rating;
+    this.selectedRating = rating as Rating | 0;
     this.applyFilters();
   }
 
   // Event binding - sort destinations
-  onSort(sortBy: 'name' | 'rating' | 'country'): void {
+  onSort(sortBy: SortByType): void {
     this.sortBy = sortBy;
     this.applyFilters();
   }
